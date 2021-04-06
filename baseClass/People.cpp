@@ -1,4 +1,26 @@
 #include "People.h"
+#include<random>
+#include<ctime>
+std::mt19937 sex_rnd(time(NULL));
+People::People(int m_strength,int m_intelligence,int m_age,int m_health_ability,int m_happy_ability)
+{   
+    setSex();
+    strength=m_strength;
+    intelligence=m_intelligence;
+    age=m_age;
+    health_ability=m_health_ability;
+    happy_ability=m_happy_ability;
+}
+
+bool People::getSex()
+{
+    return sex;
+}
+
+void People::setSex()
+{
+    sex=sex_rnd()&1;
+}
 
 bool People::setHappyAbility(int x)
 {
