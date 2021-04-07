@@ -3,6 +3,7 @@
 #include<random>
 #include<ctime>
 People a[10000];
+Building b;
 int main(){
     int cnt0=0,cnt1=0;
     int T=5;

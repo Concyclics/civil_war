@@ -2,7 +2,7 @@
 #ifndef PEOPLE_H    
 #define PEOPLE_H
 #include<utility>
-
+#include "Building.h"
 class People
 {
     public:
@@ -15,6 +15,7 @@ class People
         int getHealthability();
         int getStrength();
         int getHappyAbility();
+        void EraseSelf();   //delete from building
     protected:
         bool sex;//0/1 girl boy
         int strength;//0-200
@@ -22,6 +23,7 @@ class People
         int age;
         int health_ability;//0-100
         int happy_ability;//0-100
+        Building* belonging;//NULL为空
        /*std::pair<int,int>born*/;
 };
 

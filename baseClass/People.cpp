@@ -10,6 +10,12 @@ People::People(int m_strength,int m_intelligence,int m_age,int m_health_ability,
     age=m_age;
     health_ability=m_health_ability;
     happy_ability=m_happy_ability;
+    belonging=NULL;
+}
+
+void People::EraseSelf()
+{
+    belonging=NULL;
 }
 
 bool People::getSex()

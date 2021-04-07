@@ -1,7 +1,17 @@
-#include<unordered_set>
+#ifndef BUILDING_H
+#define BUILDING_H
 #include<cstring>
+#include<set>
 #include"People.h"
 #include<string>
+class Less
+{
+	public:
+		bool operator()(const People*a,const People*b)const
+		{
+			return a<b;
+		}
+};
 class Building
 {
 public:
@@ -33,5 +43,6 @@ protected:
 	int capacity;
 	int durability;
 	int area;
-	std::unordered_set <People*> contained_people;
+	std::set<People*,Less>contained_people;
 };
+#endif

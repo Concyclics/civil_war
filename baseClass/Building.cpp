@@ -7,6 +7,12 @@ Building::Building()//Class "People" should be changed
 
 void Building::DeleteBuilding()//Class "People" should be changed
 {
+	std::set<People*,Less>::iterator it;
+	for(it=contained_people.begin();it!=contained_people.end();it++)
+	{
+		(*it)->EraseSelf();//
+	}
+	contained_people.clear();
 }
 
 
@@ -61,6 +67,7 @@ void Building::AddPeople(People* x)
 void Building::ErasePeople(People* x)
 {
 	contained_people.erase(x);
+	x->EraseSelf();
 }
 
 int Building::getPopulation()
