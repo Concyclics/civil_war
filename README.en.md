@@ -4,7 +4,7 @@
 陈涵、曹云舒，张天乐的软件开发大作业
 
 #### Software Architecture
-Software architecture description
+C++、python3
 
 #### Installation
 
