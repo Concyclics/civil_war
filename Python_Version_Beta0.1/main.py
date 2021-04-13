@@ -2,9 +2,10 @@
 #GUI is here
 import init
 import sys
-import pygame
 import random
 import Area
+import pygame
+import Button
 
 #for screen
 SCR_W=init.SCR_W
@@ -27,6 +28,8 @@ BLUE=(0,0,255)
 GREEN=(0,255,0)
 belongColor=[WHITE,BLUE,RED]
 SelectColor=[GREEN,]
+
+#Soider
 
 #Area belong update
 def upadateAreaBelong():
@@ -70,6 +73,9 @@ def AreaReputationDisplay():
 			text=font.render("地区编号: "+str(mouseSelectArea)+" 地区归属: "+str(Areas[mouseSelectArea].belong),True,BLACK,WHITE)
 		screen.blit(text,(0,SCR_H))
 		
+def SoiderButtonDisplay():
+    screen.blit(soider_upbutton,(Button.Soider.x,Button.Soider.y))
+    	
 def TotalReputationDisplay():
 	reputation=0
 	armys=0
@@ -89,6 +95,10 @@ init.Init()
 Areas=init.AreaList
 playerArea=[0,1,2,3,4,10,11,12,13,20,21,22,30,31,40]
 enemyArea=[len(Areas)-1]
+
+#Soider
+soider_upbutton=pygame.image.load(Button.Soider.upimage)
+soider_downbutton=Button.Soider.downimage
 
 #pygame init
 pygame.init()
@@ -110,6 +120,7 @@ font=pygame.font.Font(init.character,init.charSIZE)
 #options
 screen.fill(WHITE)
 while True:
+	SoiderButtonDisplay()
 	for event in pygame.event.get():
 		#exit
 		if event.type == pygame.QUIT:
