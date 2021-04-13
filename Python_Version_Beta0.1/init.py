@@ -26,6 +26,9 @@ LINE_WIDTH=4
 background="resources/background.jpg"
 mouse_image="resources/mouse_image.png"
 
+#for characters
+character="resources/char.ttc"
+charSIZE=28
 
 
 AreaList=[]

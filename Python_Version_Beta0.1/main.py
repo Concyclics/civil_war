@@ -53,15 +53,33 @@ def Mouse_inArea(x,y):
 			return place.NO
 	return -1
 
+#in map
+def Mouse_inMap(x,y):
+	if(x>=0 and x<=SCR_W and y>=0 and y<=SCR_H):
+		return True
+	else:
+		return False
+
 #text display
 def AreaReputationDisplay():
 	if(mouseSelectArea>=0):
+		screen.fill(WHITE)
 		if(Areas[mouseSelectArea].belong==1):
 			text=font.render("地区编号: "+str(mouseSelectArea)+" 当地人口: "+str(Areas[mouseSelectArea].people)+" 驻地军队: "+str(Areas[mouseSelectArea].army),True,BLACK,WHITE)
 		else:
 			text=font.render("地区编号: "+str(mouseSelectArea)+" 地区归属: "+str(Areas[mouseSelectArea].belong),True,BLACK,WHITE)
 		screen.blit(text,(0,SCR_H))
-
+		
+def TotalReputationDisplay():
+	reputation=0
+	armys=0
+	screen.fill(WHITE)
+	for place in playerArea:
+		reputation+=Areas[place].people
+		armys+=Areas[place].army
+	text=font.render("玩家拥有地区: "+str(len(playerArea))+" 总计人口: "+str(reputation)+" 总计军队: "+str(armys),True,BLACK,WHITE)
+	screen.blit(text,(0,SCR_H))
+		
 #main flow
 
 #init
@@ -69,7 +87,7 @@ init.Init()
 
 #datas
 Areas=init.AreaList
-playerArea=[0]
+playerArea=[0,1,2,3,4,10,11,12,13,20,21,22,30,31,40]
 enemyArea=[len(Areas)-1]
 
 #pygame init
@@ -87,11 +105,11 @@ clock=pygame.time.Clock()
 clock.tick(60)
 
 #characters
-font=pygame.font.Font("resources/char.ttf",20)
+font=pygame.font.Font(init.character,init.charSIZE)
 
 #options
+screen.fill(WHITE)
 while True:
-	screen.fill(WHITE)
 	for event in pygame.event.get():
 		#exit
 		if event.type == pygame.QUIT:
@@ -99,6 +117,11 @@ while True:
 		if event.type == pygame.MOUSEBUTTONDOWN:
 			x,y=getMousePos()
 			mouseSelectArea=Mouse_inArea(x,y)
+			if(mouseSelectArea>=0):
+				AreaReputationDisplay()
+			elif(Mouse_inMap(x,y)):
+				TotalReputationDisplay()
+				
 	
 	#background
 	screen.blit(wargame,wargamerect)
@@ -112,7 +135,6 @@ while True:
 	
 	#display mouse
 	#screen.blit(mouse_cursor, (x, y))
-	AreaReputationDisplay()
 	upadateAreaBelong()	
 	pygame.display.flip()
 	
