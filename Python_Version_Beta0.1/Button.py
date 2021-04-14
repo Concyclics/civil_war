@@ -15,8 +15,8 @@ class Button(object):
         if posX>=self.x and posX<=self.x+self.sizeX and posY>=self.y and posY<=self.y+self.sizeY:
             return True
 
-soider_upimage="resources/soider.png"
-soider_downimage="resources/soider.png"
-Soider=Button(soider_upimage,soider_downimage,20,620,40,40)
+soider_upimage="resources/soider_button_up.png"
+soider_downimage="resources/soider_button_down.png"
+Soider=Button(soider_upimage,soider_downimage,20,720,40,40)
 
     

@@ -74,8 +74,8 @@ def AreaReputationDisplay():
 		screen.blit(text,(0,SCR_H))
 		
 def SoiderButtonDisplay():
-    screen.blit(soider_upbutton,(Button.Soider.x,Button.Soider.y))
-    	
+	screen.blit(soider_upbutton,(Button.Soider.x,Button.Soider.y))
+	
 def TotalReputationDisplay():
 	reputation=0
 	armys=0
