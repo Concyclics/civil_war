@@ -27,7 +27,7 @@ background="resources/background.jpg"
 mouse_image="resources/mouse_image.png"
 
 #for characters
-character="resources/char.ttc"
+character="resources/char.ttf"
 charSIZE=28
 
 
