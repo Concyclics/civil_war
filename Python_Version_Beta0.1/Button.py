@@ -25,6 +25,6 @@ class Button(object):
 
 soider_upimage="resources/soider_button_up.png"
 soider_downimage="resources/soider_button_down.png"
-Soider=Button(soider_upimage,soider_downimage,20,720,40,40)
+Soider=Button(soider_upimage,soider_downimage,20,720,80,31)
 
     
