@@ -31,6 +31,7 @@ SelectColor=[GREEN,]
 
 #Soider
 
+
 #Area belong update
 def upadateAreaBelong():
 	for x in playerArea:
@@ -73,8 +74,9 @@ def AreaReputationDisplay():
 			text=font.render("地区编号: "+str(mouseSelectArea)+" 地区归属: "+str(Areas[mouseSelectArea].belong),True,BLACK,WHITE)
 		screen.blit(text,(0,SCR_H))
 		
-def SoiderButtonDisplay():
-	screen.blit(soider_upbutton,(Button.Soider.x,Button.Soider.y))
+def SoiderButtonDisplay(x,y):
+	ButtonImage=pygame.image.load(Button.Soider.ButtonStatus(x,y))
+	screen.blit(ButtonImage,(Button.Soider.x,Button.Soider.y))
 	
 def TotalReputationDisplay():
 	reputation=0
@@ -96,10 +98,6 @@ Areas=init.AreaList
 playerArea=[0,1,2,3,4,10,11,12,13,20,21,22,30,31,40]
 enemyArea=[len(Areas)-1]
 
-#Soider
-soider_upbutton=pygame.image.load(Button.Soider.upimage)
-soider_downbutton=Button.Soider.downimage
-
 #pygame init
 pygame.init()
 size=width,height=max(init.TEXT_W,SCR_W),SCR_H+init.TEXT_H
@@ -120,7 +118,6 @@ font=pygame.font.Font(init.character,init.charSIZE)
 #options
 screen.fill(WHITE)
 while True:
-	SoiderButtonDisplay()
 	for event in pygame.event.get():
 		#exit
 		if event.type == pygame.QUIT:
@@ -132,7 +129,7 @@ while True:
 				AreaReputationDisplay()
 			elif(Mouse_inMap(x,y)):
 				TotalReputationDisplay()
-				
+			SoiderButtonDisplay(x, y)
 	
 	#background
 	screen.blit(wargame,wargamerect)
